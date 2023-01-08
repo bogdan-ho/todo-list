@@ -1,16 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
-const initalState = {};
+const tasksAdapter = createEntityAdapter();
+const initialState = tasksAdapter.getInitialState();
 
 const tasksSlice = createSlice({
   name: 'tasks',
-  initalState,
+  initialState,
   reducers: {
     addTask: tasksAdapter.addOne,
     removeTask: tasksAdapter.removeOne,
-    completeTask: (state, action) => {
-
-    },
+    completeTask: tasksAdapter.updateOne,
   },
 });
 
+export const tasksSelector = tasksAdapter.getSelectors((state) => state.tasks);
+export const { actions } = tasksSlice;
+export default tasksSlice.reducer;

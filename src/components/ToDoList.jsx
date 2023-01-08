@@ -1,14 +1,18 @@
 import React from 'react';
 import { ListGroup } from 'react-bootstrap/esm';
+import { useSelector } from 'react-redux';
+import _uniqueId from 'lodash/uniqueId';
+
+import { tasksSelector } from '../slices/tasksSlice';
 import ToDoItem from './ToDoItem';
 
 const ToDoList = () => {
-  const todoList = ['todo1', 'todo2', 'todo3'];
+  const tasks = useSelector(tasksSelector.selectAll);
 
   return (
     <ListGroup className="w-50">
-      {todoList.map((item) => (
-        <ToDoItem key={item} value={item} />
+      {tasks.map((task) => (
+        <ToDoItem key={_uniqueId('key-')} value={task} />
       ))}
     </ListGroup>
   );

@@ -9,7 +9,7 @@ const tasksSlice = createSlice({
   reducers: {
     addTask: tasksAdapter.addOne,
     removeTask: tasksAdapter.removeOne,
-    completeTask: tasksAdapter.updateOne,
+    updateTask: tasksAdapter.updateOne,
   },
 });
 

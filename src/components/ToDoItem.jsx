@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { CloseButton, ListGroup, Form } from 'react-bootstrap/esm';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useDispatch } from 'react-redux';
 import { actions } from '../slices/tasksSlice';
 
 const ToDoItem = ({ value }) => {
-  // const [removeButton, setRemoveButton] = useState(false);
+  const [removeButton, setRemoveButton] = useState(false);
   const { id, task, completed } = value;
-  const [currentTask, setCurrentTask] = useState(task)
+  const [currentTask, setCurrentTask] = useState(task);
 
   const dispatch = useDispatch();
   const handleCompleteTask = (taskId) => () => {
@@ -19,9 +20,12 @@ const ToDoItem = ({ value }) => {
   const handleChangeTask = (taskId) => (event) => {
     dispatch(actions.updateTask({ id: taskId, changes: { task: event.target.value } }));
   };
+  const handleRemoveTask = (taskId) => () => {
+    dispatch(actions.removeTask(taskId));
+  };
 
   return (
-    <InputGroup className="mb-2" onInput={console.log('onInput')} onSelect={console.log('onSelect')}>
+    <InputGroup className="mb-2" onMouseOver={() => setRemoveButton(true)} onMouseOut={() => setRemoveButton(false)}>
       <Form.Check
         onChange={handleCompleteTask(id)}
         checked={completed}
@@ -35,6 +39,13 @@ const ToDoItem = ({ value }) => {
         value={currentTask}
         onChange={handleChange}
       />
+      {removeButton
+        ? (
+          <Button variant="danger" onClick={handleRemoveTask(id)}>
+            X
+          </Button>
+        )
+        : null}
     </InputGroup>
   );
 };

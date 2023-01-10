@@ -28,29 +28,38 @@ const Header = () => {
   const formik = useFormik({ onSubmit: handleSubmit, validationSchema: schema, initialValues: { body: '' } });
 
   return (
-    <header className="w-100 d-flex flex-column align-items-center">
-      <h1 className="display-1 text-primary">todos</h1>
-      <Form className="w-50" onSubmit={formik.handleSubmit}>
-        <FloatingLabel
-          controlId="floatingInput"
-          label="What needs to be done?"
-          className="mb-3 "
-        >
-          <Form.Control
-            type="text"
-            aria-label="new task"
-            ref={inputRef}
-            placeholder="Drink some tea"
-            isInvalid={formik.errors.body}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.body}
-            name="body"
-            required
-          />
-          <Form.Control.Feedback type="invalid">{formik.errors.body}</Form.Control.Feedback>
-        </FloatingLabel>
-      </Form>
+
+    <header>
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-12 col-md-8">
+            <div className="d-flex justify-content-center">
+              <h1 className="display-1 text-primary">todos</h1>
+            </div>
+            <Form onSubmit={formik.handleSubmit}>
+              <FloatingLabel
+                controlId="floatingInput"
+                label="What needs to be done?"
+                className="mb-3 "
+              >
+                <Form.Control
+                  type="text"
+                  aria-label="new task"
+                  ref={inputRef}
+                  placeholder="Drink some tea"
+                  isInvalid={formik.errors.body}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.body}
+                  name="body"
+                  required
+                />
+                <Form.Control.Feedback type="invalid">{formik.errors.body}</Form.Control.Feedback>
+              </FloatingLabel>
+            </Form>
+          </div>
+        </div>
+      </div>
     </header>
   );
 };

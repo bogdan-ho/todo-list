@@ -22,11 +22,18 @@ const ToDoList = () => {
     });
 
   return (
-    <ListGroup className="w-50">
-      {tasksForRender.map((task) => (
-        <ToDoItem key={_uniqueId('key-')} value={task} />
-      ))}
-    </ListGroup>
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-8 mt-1">
+          <ListGroup>
+            {tasksForRender.map((task) => (
+              <ToDoItem key={_uniqueId('key-')} value={task} />
+            ))}
+          </ListGroup>
+        </div>
+      </div>
+    </div>
+
   );
 };
 

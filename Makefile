@@ -12,3 +12,6 @@ lint:
 
 linter-fix:
 	npx eslint . --fix
+
+test:
+	npx playwright test

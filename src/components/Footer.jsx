@@ -29,7 +29,7 @@ const Footer = () => {
 
   return (
     <div className="w-50 bg-white border rounded p-2 mt-1 d-flex justify-content-between align-items-center">
-      <span className="p-1 text-secondary">
+      <span className="p-1 text-secondary" aria-label="tasks left">
         {activeTasks.length}
         {' '}
         <small>items left</small>

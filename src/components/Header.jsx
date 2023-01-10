@@ -38,6 +38,7 @@ const Header = () => {
         >
           <Form.Control
             type="text"
+            aria-label="new task"
             ref={inputRef}
             placeholder="Drink some tea"
             isInvalid={formik.errors.body}

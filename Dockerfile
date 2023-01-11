@@ -1,4 +1,4 @@
-FROM node as build-deps
+FROM node
 
 WORKDIR /app
 
@@ -10,14 +10,8 @@ RUN npm ci
 
 COPY . .
 
-RUN npm run build
+# RUN npm build
 
 EXPOSE 3000
 
-FROM nginx
-
-COPY --from=build-deps /app/build /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+# CMD ["npm", "start"]

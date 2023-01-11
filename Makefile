@@ -7,6 +7,9 @@ start:
 build:
 	docker-compose build
 
+deploy:
+	npm run deploy
+
 up:
 	docker-compose up -d
 
